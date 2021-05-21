@@ -25,57 +25,6 @@ module.exports = (Database) => {
             }
         },
         model: {
-            /*create: (data) => {
-                if (data.subCollection) {
-                    Client.dbModels.set(data.name, {
-                        collection: data.collection,
-                        subCollection: data.subCollection,
-                        merge: data.merge ? data.merge : true
-                    })
-                } else {
-                    Client.dbModels.set(data.name, {
-                        collection: data.collection,
-                        merge: data.merge ? data.merge : true
-                    })
-                }
-            },
-            get: ({ modelName, done }) => {
-                
-                if (!Client.dbModels.get(modelName)) {
-                    console.log(`Database model ${modelName} not found. Exiting process.`)
-                    process.exit()
-                }
-
-                const model = Client.dbModels.get(modelName)
-
-                if(model.subCollection) {
-                    Database.collection(model.collection.name).doc(model.collection.value).collection(model.subCollection.name).doc(data.subCollection.value).get().then(snap => {
-                        return done(snap);
-                    })
-                } else {
-                    Database.collection(model.collection.name).doc(model.collection.value).get().then(snap => {
-                        return done(snap);
-                    })
-                }
-            },
-            set: (modelName, data) => {
-                if (!Client.dbModels.get(modelName)) {
-                    console.log(`Database model ${modelName} not found. Exiting process.`)
-                    process.exit()
-                }
-                
-                const model = Client.dbModels.get(modelName)
-
-                if(model.subCollection) {
-                    if(!data.subCollection) {
-                        console.log(`This model requires a subcollection to be set. Exiting process to prevent further errors.`)
-                        process.exit()
-                        return
-                    }
-
-                    Database.collection(model.collection.name).doc(model.collection.value).collection(model.subCollection.name).doc(data.subCollection.value).set(data)
-                }
-            }*/
             create: (modelName, data, merge) => {
                 Database.collection("models").doc(modelName).set(data, { merge: merge ? merge: true})
             },
