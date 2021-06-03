@@ -108,17 +108,6 @@ const { QuickDB } = require('@chaoticvisions/easydjs')
 const Database = require('./Database/Firestore')
 
 // On Guild Join Event
-/*
-QuickDB(DBFile).create(model, {
-    collection: {
-      name: collectionName,
-      value: collectionDocument
-    }
-})
-QuickDB(DBFile).set(model, {
-    valueToSet: 'hello'
-})
-*/
 client.on('guildCreate', (guild) => {
     QuickDB(Database).model.create(`guild_${guild.id}`, {
         collection: {
